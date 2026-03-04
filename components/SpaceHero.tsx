@@ -125,9 +125,7 @@ const SpaceHero = () => {
             <div className="absolute inset-0 z-[9] pointer-events-none mix-blend-overlay"
                 style={{ background: 'radial-gradient(circle at center, rgba(0,229,255,0.03) 0%, rgba(106,0,255,0.05) 40%, rgba(5,5,9,0.6) 100%)' }} />
 
-            {/* Seamless Dark Black Footer Mask */}
-            <div className="absolute bottom-0 left-0 right-0 h-[150px] bg-black z-[100] pointer-events-none select-none" />
-            <div className="absolute bottom-[149px] left-0 right-0 h-40 bg-gradient-to-t from-black to-transparent z-[100] pointer-events-none" />
+
 
             {/* --- BACKGROUND OVERLAYS --- */}
 
@@ -241,7 +239,7 @@ const SpaceHero = () => {
                                 className="pointer-events-auto"
                             >
                                 <a href="https://unstop.com/hackathons/orchathon-n-k-orchid-college-of-engineering-technologysolapur-1652140" target="_blank" rel="noopener noreferrer">
-                                    <Button variant="blue" size="lg" className="w-64 md:w-80 text-xl font-black italic tracking-wider">
+                                    <Button variant="blue" size="lg" className="w-64 md:w-80 text-xl font-extrabold text-white italic tracking-wider drop-shadow-[0_0_10px_rgba(255,255,255,0.3)]">
                                         REGISTER NOW
                                     </Button>
                                 </a>
