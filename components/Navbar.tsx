@@ -36,7 +36,7 @@ const Navbar = () => {
 
     return (
         <motion.nav
-            className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? 'bg-black/50 backdrop-blur-md border-b border-white/10 py-4' : 'bg-transparent py-6'
+            className={`fixed top-0 left-0 right-0 z-[1000] transition-all duration-300 ${scrolled ? 'bg-black/80 backdrop-blur-md border-b border-white/10 py-3' : 'bg-transparent py-4'
                 }`}
             initial={{ y: -100 }}
             animate={{ y: 0 }}
@@ -87,9 +87,9 @@ const Navbar = () => {
                         initial={{ opacity: 0, height: 0 }}
                         animate={{ opacity: 1, height: 'auto' }}
                         exit={{ opacity: 0, height: 0 }}
-                        className="md:hidden bg-black/95 backdrop-blur-xl border-b border-white/10 overflow-hidden"
+                        className="md:hidden bg-black fixed inset-0 z-[1001] flex flex-col pt-20"
                     >
-                        <div className="flex flex-col space-y-4 px-6 py-8">
+                        <div className="flex flex-col space-y-8 px-8 py-10">
                             {navLinks.map((link) => (
                                 <Link
                                     key={link.name}
@@ -101,7 +101,7 @@ const Navbar = () => {
                                 </Link>
                             ))}
                             <a href="https://unstop.com/hackathons/orchathon-n-k-orchid-college-of-engineering-technologysolapur-1652140" target="_blank" rel="noopener noreferrer" className="w-full mt-4">
-                                <Button variant="primary" size="lg" className="w-full" onClick={() => setIsOpen(false)}>
+                                <Button variant="primary" size="md" className="w-full" onClick={() => setIsOpen(false)}>
                                     Register Now
                                 </Button>
                             </a>

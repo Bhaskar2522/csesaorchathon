@@ -17,7 +17,7 @@ const Registration = () => {
             </div>
 
             {/* --- MISSION PHASES TIMELINE --- */}
-            <div className="container mx-auto px-6 mb-32 relative z-10 w-full max-w-5xl">
+            <div className="container mx-auto px-6 mb-16 md:mb-32 relative z-10 w-full max-w-5xl">
                 <div className="flex flex-col items-center mb-20 text-center">
                     <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-cyan-500/30 bg-cyan-500/10 mb-4 overflow-hidden relative">
                         <div className="w-1 h-1 rounded-full bg-cyan-400 animate-pulse" />

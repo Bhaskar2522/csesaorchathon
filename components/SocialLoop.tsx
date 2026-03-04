@@ -58,7 +58,7 @@ const SocialLoop = () => {
     const loopedIcons = [...icons, ...icons, ...icons];
 
     return (
-        <div className="fixed right-3 md:right-8 top-[10%] bottom-[10%] z-[99] w-16 md:w-20 flex flex-col items-center pointer-events-none">
+        <div className="fixed right-3 md:right-8 top-[10%] bottom-[10%] z-[99] w-16 md:w-20 hidden md:flex flex-col items-center pointer-events-none">
             {/* Clipping Container */}
             <div className="relative z-10 w-full h-full overflow-hidden mask-fade-vertical px-1 pb-4">
                 <motion.div

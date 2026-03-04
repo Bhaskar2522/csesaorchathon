@@ -153,7 +153,7 @@ const SpaceHero = () => {
 
 
             {/* --- TOP STATUS BAR --- */}
-            <div className="absolute top-24 left-1/2 -translate-x-1/2 z-50 pointer-events-auto">
+            <div className="absolute top-24 left-1/2 -translate-x-1/2 z-50 pointer-events-auto hidden md:block">
                 <motion.div
                     initial={{ y: -20, opacity: 0 }}
                     animate={{ y: 0, opacity: 1 }}
@@ -198,7 +198,7 @@ const SpaceHero = () => {
                     className="flex flex-col items-center gap-4 mt-16"
                 >
                     <h3 className="font-mono text-sm md:text-base tracking-[0.3em] text-cyan-400 uppercase">CSESA PRESENTS</h3>
-                    <h1 className="text-6xl md:text-8xl lg:text-[120px] font-black italic tracking-tighter text-transparent bg-clip-text bg-gradient-to-br from-white via-blue-100 to-cyan-500 drop-shadow-[0_0_30px_rgba(0,229,255,0.4)]">
+                    <h1 className="text-4xl sm:text-5xl md:text-8xl lg:text-[120px] font-black italic tracking-tighter text-transparent bg-clip-text bg-gradient-to-br from-white via-blue-100 to-cyan-500 drop-shadow-[0_0_30px_rgba(0,229,255,0.4)]">
                         ORCHATHON <br className="md:hidden" /><span className="text-white drop-shadow-[0_0_20px_rgba(255,100,0,0.6)]">2K26</span>
                     </h1>
                     <h2 className="text-lg md:text-2xl font-light tracking-[0.2em] text-cyan-50/80 uppercase max-w-2xl mt-4">
@@ -221,11 +221,11 @@ const SpaceHero = () => {
                                     { label: "SECS", value: timeLeft.seconds }
                                 ].map((time, idx) => (
                                     <div key={idx} className="flex flex-col items-center">
-                                        <div className="w-[70px] h-[70px] md:w-24 md:h-24 rounded-lg border border-cyan-500/30 bg-black/60 backdrop-blur-md flex items-center justify-center shadow-[0_0_20px_rgba(0,255,255,0.15)] mb-3 relative overflow-hidden group">
+                                        <div className="w-[60px] h-[60px] md:w-24 md:h-24 rounded-lg border border-cyan-500/30 bg-black/60 backdrop-blur-md flex items-center justify-center shadow-[0_0_20px_rgba(0,255,255,0.15)] mb-3 relative overflow-hidden group">
                                             {/* Scanline hover effect */}
                                             <div className="absolute inset-0 bg-gradient-to-b from-cyan-500/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
-                                            <span className="text-3xl md:text-5xl font-bold text-white font-mono drop-shadow-[0_0_10px_rgba(0,255,255,0.8)] relative z-10">
+                                            <span className="text-2xl md:text-5xl font-bold text-white font-mono drop-shadow-[0_0_10px_rgba(0,255,255,0.8)] relative z-10">
                                                 {time.value.toString().padStart(2, '0')}
                                             </span>
                                         </div>
