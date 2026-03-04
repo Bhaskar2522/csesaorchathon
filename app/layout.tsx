@@ -13,8 +13,17 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Orchathon – CodeLaunch 36",
-  description: "Igniting Innovation. Launching Code.",
+  title: "ORCHATHON 2K26 – Innovate Beyond Boundaries | National Level 36-Hour Hackathon",
+  description:
+    "ORCHATHON 2K26 – Innovate Beyond Boundaries is a National Level 36-Hour Hackathon organized by N. K. Orchid College of Engineering & Technology (NKOCET), Solapur. Participate and win prizes worth ₹50,000.",
+  keywords: [
+    "Orchathon 2K26",
+    "Hackathon Solapur",
+    "NKOCET Hackathon",
+    "National Level Hackathon India",
+    "Data Science Hackathon",
+    "Software Development Hackathon"
+  ],
   icons: {
     icon: "/logo.png",
   },
