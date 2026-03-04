@@ -33,11 +33,11 @@ const SocialIconItem = ({ icon: Icon, label, href }: { icon: any, label: string,
     </a>
 );
 
-// College Logo Icon
-const CollegeIcon = () => (
+// Project Logo Icon
+const ProjectIcon = () => (
     <img
-        src="/college_logo.png"
-        alt="College Logo"
+        src="/logo.png"
+        alt="Orchathon Logo"
         className="w-8 h-8 md:w-10 md:h-10 object-contain"
     />
 );
@@ -47,7 +47,7 @@ const SocialLoop = () => {
         { icon: FaGithub, label: 'GITHUB', href: 'https://github.com/Bhaskar2522/orchathon' },
         { icon: FaInstagram, label: 'INSTAGRAM', href: 'https://www.instagram.com/csesa_nkocet?igsh=MTV2Z3d0MGE0czVmcw==' },
         { icon: FaLinkedin, label: 'LINKEDIN', href: 'https://www.linkedin.com/company/csesa-nkocet/' },
-        { icon: CollegeIcon, label: 'COLLEGE', href: 'https://orchidengg.ac.in/' },
+        { icon: ProjectIcon, label: 'ORCHATHON', href: 'https://orchidengg.ac.in/' },
         { icon: FaFacebook, label: 'FACEBOOK', href: 'https://www.facebook.com/share/1AGMLqNb6Z/' },
         { icon: FaWhatsapp, label: 'WHATSAPP', href: 'https://chat.whatsapp.com/JoKZEl9KLNIJEAG5YANaAx' },
         { icon: FaXTwitter, label: 'X (TWITTER)', href: 'https://x.com/nk_orchid' },

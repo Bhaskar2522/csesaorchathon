@@ -45,7 +45,7 @@ const Navbar = () => {
             <div className="container mx-auto px-6 flex items-center justify-between">
                 <Link href="/" className="flex items-center gap-3 group">
                     <img
-                        src="/college_logo.png"
+                        src="/logo.png"
                         alt="Logo"
                         className="h-10 w-auto"
                     />
@@ -84,24 +84,45 @@ const Navbar = () => {
             <AnimatePresence>
                 {isOpen && (
                     <motion.div
-                        initial={{ opacity: 0, height: 0 }}
-                        animate={{ opacity: 1, height: 'auto' }}
-                        exit={{ opacity: 0, height: 0 }}
-                        className="md:hidden bg-black fixed inset-0 z-[1001] flex flex-col pt-20"
+                        initial={{ opacity: 0, x: '100%' }}
+                        animate={{ opacity: 1, x: 0 }}
+                        exit={{ opacity: 0, x: '100%' }}
+                        transition={{ type: 'spring', damping: 25, stiffness: 200 }}
+                        className="md:hidden bg-black fixed inset-0 z-[9999] flex flex-col"
                     >
-                        <div className="flex flex-col space-y-8 px-8 py-10">
+                        {/* Mobile Menu Header */}
+                        <div className="flex items-center justify-between px-6 py-6 border-b border-white/10 bg-black">
+                            <Link href="/" className="flex items-center gap-3" onClick={() => setIsOpen(false)}>
+                                <img
+                                    src="/logo.png"
+                                    alt="Logo"
+                                    className="h-10 w-auto"
+                                />
+                                <div className="text-2xl font-bold tracking-tighter text-white">
+                                    ORCH<span className="text-primary">ATHON</span>
+                                </div>
+                            </Link>
+                            <button
+                                className="text-white p-2 focus:outline-none"
+                                onClick={() => setIsOpen(false)}
+                            >
+                                <X size={32} />
+                            </button>
+                        </div>
+
+                        <div className="flex-1 flex flex-col space-y-10 px-8 py-16 overflow-y-auto bg-black">
                             {navLinks.map((link) => (
                                 <Link
                                     key={link.name}
                                     href={link.href}
                                     onClick={() => setIsOpen(false)}
-                                    className="text-lg font-medium text-gray-300 hover:text-primary transition-colors uppercase tracking-widest"
+                                    className="text-3xl font-bold text-gray-300 hover:text-primary transition-colors uppercase tracking-widest"
                                 >
                                     {link.name}
                                 </Link>
                             ))}
-                            <a href="https://unstop.com/hackathons/orchathon-n-k-orchid-college-of-engineering-technologysolapur-1652140" target="_blank" rel="noopener noreferrer" className="w-full mt-4">
-                                <Button variant="primary" size="md" className="w-full" onClick={() => setIsOpen(false)}>
+                            <a href="https://unstop.com/hackathons/orchathon-n-k-orchid-college-of-engineering-technologysolapur-1652140" target="_blank" rel="noopener noreferrer" className="w-full pt-8">
+                                <Button variant="primary" size="lg" className="w-full text-xl" onClick={() => setIsOpen(false)}>
                                     Register Now
                                 </Button>
                             </a>
