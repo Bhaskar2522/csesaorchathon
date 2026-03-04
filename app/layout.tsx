@@ -13,7 +13,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Orchaton – CodeLaunch 36",
+  title: "Orchathon – CodeLaunch 36",
   description: "Igniting Innovation. Launching Code.",
 };
 

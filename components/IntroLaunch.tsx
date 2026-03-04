@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import SplineModel from './SplineModel';
 // removed Button import since it's no longer used
 import RocketShip from './ui/RocketShip'; // Keeping this as a fallback or for specific parts if needed, but primarily using image
 
@@ -13,6 +14,7 @@ const IntroLaunch = ({ onLaunchComplete }: IntroLaunchProps) => {
     // Stages: 'countdown-3' -> 'countdown-2' -> 'countdown-1' -> 'igniting' -> 'launched'
     const [status, setStatus] = useState<'countdown-3' | 'countdown-2' | 'countdown-1' | 'igniting' | 'launched'>('countdown-3');
     const [warpLines, setWarpLines] = useState<Array<{ left: number, height: number, duration: number, delay: number }>>([]);
+    const [particles, setParticles] = useState<Array<{ y: number, xStart: number, xEnd: number, duration: number, delay: number, width: number, height: number, colorId: number }>>([]);
     const sequenceStarted = React.useRef(false);
 
     useEffect(() => {
@@ -22,6 +24,17 @@ const IntroLaunch = ({ onLaunchComplete }: IntroLaunchProps) => {
             height: Math.random() * 20 + 10,
             duration: 0.2 + Math.random() * 0.5,
             delay: Math.random() * 0.5
+        })));
+
+        setParticles(Array.from({ length: 40 }).map(() => ({
+            y: 200 + Math.random() * 100,
+            xStart: (Math.random() - 0.5) * 60,
+            xEnd: (Math.random() - 0.5) * 200,
+            duration: 0.4 + Math.random() * 0.4,
+            delay: Math.random() * 0.2,
+            width: 10 + Math.random() * 20,
+            height: 10 + Math.random() * 20,
+            colorId: Math.floor(Math.random() * 3)
         })));
 
         // Double launch fix: Ensure sequence runs only once
@@ -91,40 +104,71 @@ const IntroLaunch = ({ onLaunchComplete }: IntroLaunchProps) => {
                         className="relative z-10 flex flex-col items-center"
                     >
                         <div className="relative w-64 h-64 md:w-96 md:h-96">
-                            {/* Replaced SVG with Cyberpunk Image - Animated Version */}
-                            {/* Replaced Image with Animated SVG Component */}
-                            {/* User's Custom Rocket Image */}
-                            <motion.img
-                                src="/custom-rocket.png"
-                                alt="Custom Cyberpunk Rocket"
-                                className="w-full h-full object-contain transform origin-bottom"
-                                variants={{
-                                    'countdown-3': { x: 0, y: 0 },
-                                    'countdown-2': { x: [0, -1, 1, 0], y: [0, 1, 0], transition: { duration: 0.1, repeat: Infinity } },
-                                    'countdown-1': { x: [0, -3, 3, -2, 2, 0], y: [0, 2, -2, 0], transition: { duration: 0.1, repeat: Infinity } },
-                                    'igniting': {
-                                        x: [0, -5, 5, -5, 5, 0],
-                                        y: [0, 3, -3, 3, -3, 0],
-                                        filter: 'brightness(1.5)',
-                                        transition: { duration: 0.1, repeat: Infinity }
-                                    },
-                                    'launched': {
-                                        y: -2000,
-                                        scale: 0.8,
-                                        filter: 'blur(5px) brightness(1.5)',
-                                        transition: { duration: 1.5, ease: "easeIn" }
-                                    }
-                                }}
-                                animate={status}
-                                style={{
-                                    filter: 'drop-shadow(0 0 25px rgba(0,224,255,0.6))'
-                                }}
-                                onError={(e) => {
-                                    // Fallback if image is missing
-                                    e.currentTarget.style.display = 'none';
-                                    e.currentTarget.parentElement?.classList.add('bg-red-500/20');
-                                }}
-                            />
+                            {/* Spline 3D Rocket - Hidden on mobile for performance */}
+                            <div className="hidden md:block w-full h-full">
+                                <motion.div
+                                    className="w-full h-full transform origin-bottom"
+                                    variants={{
+                                        'countdown-3': { x: 0, y: 0 },
+                                        'countdown-2': { x: [0, -1, 1, 0], y: [0, 1, 0], transition: { duration: 0.1, repeat: Infinity } },
+                                        'countdown-1': { x: [0, -3, 3, -2, 2, 0], y: [0, 2, -2, 0], transition: { duration: 0.1, repeat: Infinity } },
+                                        'igniting': {
+                                            x: [0, -5, 5, -5, 5, 0],
+                                            y: [0, 3, -3, 3, -3, 0],
+                                            filter: 'brightness(1.2)',
+                                            transition: { duration: 0.1, repeat: Infinity }
+                                        },
+                                        'launched': {
+                                            y: -2000,
+                                            scale: 0.8,
+                                            filter: 'blur(5px) brightness(1.5)',
+                                            transition: { duration: 1.5, ease: "easeIn" }
+                                        }
+                                    }}
+                                    animate={status}
+                                    style={{
+                                        filter: 'drop-shadow(0 0 25px rgba(0,224,255,0.4))'
+                                    }}
+                                >
+                                    <div className="w-full h-full relative">
+                                        <SplineModel
+                                            scene="https://my.spline.design/launchartemisrocket-bErNgiDJlc9oCwK82bRLTAXC/"
+                                            className="w-full h-full"
+                                        />
+                                        {/* Overlay to block potential watermark interaction */}
+                                        <div className="absolute bottom-0 right-0 w-32 h-12 bg-black z-20 pointer-events-none" />
+                                    </div>
+                                </motion.div>
+                            </div>
+
+                            {/* Mobile Rocket Fallback (SVG) */}
+                            <div className="md:hidden w-full h-full">
+                                <motion.div
+                                    className="w-full h-full"
+                                    variants={{
+                                        'countdown-3': { x: 0, y: 0 },
+                                        'countdown-2': { x: [0, -1, 1, 0], y: [0, 1, 0], transition: { duration: 0.1, repeat: Infinity } },
+                                        'countdown-1': { x: [0, -3, 3, -2, 2, 0], y: [0, 2, -2, 0], transition: { duration: 0.1, repeat: Infinity } },
+                                        'igniting': {
+                                            x: [0, -2, 2, -2, 2, 0],
+                                            y: [0, 1, -1, 1, -1, 0],
+                                            transition: { duration: 0.1, repeat: Infinity }
+                                        },
+                                        'launched': {
+                                            y: -1500,
+                                            scale: 0.6,
+                                            transition: { duration: 1.2, ease: "easeIn" }
+                                        }
+                                    }}
+                                    animate={status}
+                                >
+                                    <RocketShip
+                                        active={status === 'igniting' || status === 'countdown-1'}
+                                        variant="cyberpunk"
+                                        className="w-full h-full"
+                                    />
+                                </motion.div>
+                            </div>
 
                             {/* Particle System for Smoke/Fire - Intensify during countdown-1 and Igniting */}
                             <AnimatePresence>
@@ -140,27 +184,27 @@ const IntroLaunch = ({ onLaunchComplete }: IntroLaunchProps) => {
                                         />
 
                                         {/* Particles */}
-                                        {[...Array(40)].map((_, i) => (
+                                        {particles.map((p, i) => (
                                             <motion.div
                                                 key={i}
                                                 initial={{ opacity: 0, y: 0, scale: 0.2 }}
                                                 animate={{
                                                     opacity: [0, 1, 0],
-                                                    y: [0, 200 + Math.random() * 100],
-                                                    x: [(Math.random() - 0.5) * 60, (Math.random() - 0.5) * 200],
+                                                    y: [0, p.y],
+                                                    x: [p.xStart, p.xEnd],
                                                     scale: [0.2, 1.5, 3]
                                                 }}
                                                 transition={{
-                                                    duration: 0.4 + Math.random() * 0.4,
+                                                    duration: p.duration,
                                                     repeat: Infinity,
-                                                    delay: Math.random() * 0.2,
+                                                    delay: p.delay,
                                                     ease: "easeOut"
                                                 }}
                                                 className="absolute rounded-full blur-sm"
                                                 style={{
-                                                    backgroundColor: i % 3 === 0 ? '#00E0FF' : i % 3 === 1 ? '#FF0055' : '#FFFFFF',
-                                                    width: `${10 + Math.random() * 20}px`,
-                                                    height: `${10 + Math.random() * 20}px`,
+                                                    backgroundColor: p.colorId === 0 ? '#00E0FF' : p.colorId === 1 ? '#FF0055' : '#FFFFFF',
+                                                    width: `${p.width}px`,
+                                                    height: `${p.height}px`,
                                                     zIndex: -1
                                                 }}
                                             />

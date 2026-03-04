@@ -40,7 +40,7 @@ const Mission = () => {
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                         {[
                             { title: "36 Hours", desc: "Non-stop innovation", sub: "TIME ALLOCATION" },
-                            { title: "₹1,00,000+", desc: "Prize Pool & Grants", sub: "REWARD SYSTEM" },
+                            { title: "₹50,000+", desc: "Prize Pool & Grants", sub: "REWARD SYSTEM" },
                             { title: "National", desc: "Top talent across India", sub: "DEPLOYMENT SCALE" }
                         ].map((item, index) => (
                             <motion.div

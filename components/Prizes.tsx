@@ -4,11 +4,12 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Trophy, Star, Medal, Award, Target, Users, Zap, ShieldCheck } from 'lucide-react';
 
+
 const mainPrizes = [
     {
         rank: 1,
         title: "Grand Champion",
-        amount: "RS. 12,000",
+        amount: "RS. 25,000",
         currency: "INR",
         perks: "1 Trophy + Medals + Certificates",
         color: "from-yellow-300 to-yellow-600",
@@ -21,7 +22,7 @@ const mainPrizes = [
     {
         rank: 2,
         title: "First Runner-Up",
-        amount: "RS. 8,000",
+        amount: "RS. 15,000",
         currency: "INR",
         perks: "1 Trophy + Medals + Certificates",
         color: "from-gray-300 to-gray-500",
@@ -34,7 +35,7 @@ const mainPrizes = [
     {
         rank: 3,
         title: "Second Runner-Up",
-        amount: "RS. 5,000",
+        amount: "RS. 10,000",
         currency: "INR",
         perks: "1 Trophy + Medals + Certificates",
         color: "from-amber-600 to-amber-800",
@@ -50,22 +51,40 @@ const specialPrizes = [
     {
         title: "Pre-Placement Interviews",
         desc: "Exclusive interviews for 4th-year winners immediately after the contest.",
-        icon: <Target className="w-10 h-10 text-cyan-500" strokeWidth={1.5} />,
-        colSpan: "md:col-span-2"
+        icon: <Target className="w-12 h-12" strokeWidth={1.5} />,
+        colSpan: "md:col-span-2",
+        theme: "cyan",
+        accent: "text-cyan-400",
+        bg: "bg-cyan-500/5",
+        border: "border-cyan-500/20",
+        hoverBorder: "group-hover:border-cyan-500/50",
+        glow: "shadow-[0_0_50px_rgba(6,182,212,0.15)]"
     },
     {
         title: "Best Innovative Idea + Performance",
         subtitle: "Girl's Team",
         desc: "Medals + Certificates",
-        icon: <Users className="w-10 h-10 text-pink-500" strokeWidth={1.5} />,
-        colSpan: "md:col-span-1"
+        icon: <Users className="w-12 h-12" strokeWidth={1.5} />,
+        colSpan: "md:col-span-1",
+        theme: "pink",
+        accent: "text-pink-400",
+        bg: "bg-pink-500/5",
+        border: "border-pink-500/20",
+        hoverBorder: "group-hover:border-pink-500/50",
+        glow: "shadow-[0_0_50px_rgba(236,72,153,0.15)]"
     },
     {
         title: "Best Innovative Idea + Performance",
         subtitle: "Boy's Team",
         desc: "Medals + Certificates",
-        icon: <Zap className="w-10 h-10 text-blue-500" strokeWidth={1.5} />,
-        colSpan: "md:col-span-1"
+        icon: <Zap className="w-12 h-12" strokeWidth={1.5} />,
+        colSpan: "md:col-span-1",
+        theme: "blue",
+        accent: "text-blue-400",
+        bg: "bg-blue-500/5",
+        border: "border-blue-500/20",
+        hoverBorder: "group-hover:border-blue-500/50",
+        glow: "shadow-[0_0_50px_rgba(59,130,246,0.15)]"
     }
 ];
 
@@ -73,32 +92,23 @@ const Prizes = () => {
     return (
         <section id="prizes" className="py-32 relative overflow-hidden bg-black min-h-screen flex flex-col justify-center">
             {/* 3D Spline Astronaut Background */}
-            <div className="absolute inset-0 z-0 overflow-hidden mix-blend-screen opacity-70">
-                {/* Fallback ambient color/gradient just in case */}
-                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1000px] h-[600px] bg-yellow-500/10 blur-[150px] rounded-full pointer-events-none" />
-
-                {/* 3D iframe */}
-                <div className="absolute inset-0">
-                    <iframe
-                        src='https://my.spline.design/astronautinspace-bmxHukEVvI3bP0fBSVAQrQ4u/'
-                        frameBorder='0'
-                        width='100%'
-                        height='100%'
-                        className="w-full h-full pointer-events-auto"
-                    />
-                </div>
-
-                {/* Spline Logo Mask (hides branding at bottom right) */}
-                <div className="absolute bottom-0 right-0 w-[150px] h-[50px] bg-black z-40 pointer-events-none select-none" />
+            <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
+                {/* CSS gradient background - replaces 3D astronaut */}
+                <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_75%_50%,rgba(0,200,255,0.1)_0%,transparent_60%)]" />
+                <div className="absolute top-1/2 right-1/4 -translate-y-1/2 w-[500px] h-[700px] rounded-full opacity-10"
+                    style={{ background: 'radial-gradient(ellipse, rgba(0,200,255,0.4) 0%, transparent 70%)' }} />
 
                 {/* Floating Binary Overlay */}
-                <div className="absolute inset-0 overflow-hidden opacity-[0.03] select-none pointer-events-none font-mono text-2xl" style={{ textShadow: '0 0 10px rgba(255,255,255,0.5)' }}>
-                    <div className="absolute top-[10%] left-[5%]">01001</div>
-                    <div className="absolute top-[30%] right-[10%]">11001</div>
-                    <div className="absolute bottom-[20%] left-[15%]">01011</div>
-                    <div className="absolute top-[60%] right-[20%]">00001</div>
-                    <div className="absolute bottom-[10%] right-[5%]">01111</div>
+                <div className="absolute inset-0 overflow-hidden opacity-[0.06] select-none pointer-events-none font-mono text-2xl" style={{ textShadow: '0 0 10px rgba(255,255,255,0.5)' }}>
+                    <div className="absolute top-[15%] left-[10%]">01001</div>
+                    <div className="absolute top-[35%] right-[15%]">11001</div>
+                    <div className="absolute bottom-[25%] left-[20%]">01011</div>
+                    <div className="absolute top-[65%] right-[25%]">00001</div>
+                    <div className="absolute bottom-[15%] right-[10%]">01111</div>
                 </div>
+
+                {/* Centered Ambient Glow */}
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[600px] bg-cyan-500/10 blur-[160px] rounded-full pointer-events-none" />
             </div>
 
             <div className="container mx-auto px-6 relative z-10 max-w-7xl">
@@ -175,35 +185,94 @@ const Prizes = () => {
                         <h3 className="text-3xl md:text-4xl font-bold text-white tracking-widest uppercase">Special Prizes</h3>
                     </div>
 
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                         {specialPrizes.map((special, idx) => (
                             <motion.div
                                 key={idx}
-                                initial={{ opacity: 0, scale: 0.95 }}
-                                whileInView={{ opacity: 1, scale: 1 }}
+                                initial={{ opacity: 0, y: 30 }}
+                                whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true }}
                                 transition={{ delay: idx * 0.1 }}
-                                className={`relative py-12 px-6 rounded-lg bg-black border border-white/10 hover:border-cyan-500/30 backdrop-blur-sm group transition-all duration-300 ${special.colSpan} flex flex-col items-center justify-center text-center overflow-hidden`}
+                                className={`relative py-12 px-8 rounded-3xl bg-black/40 border ${special.border} ${special.hoverBorder} backdrop-blur-xl group transition-all duration-500 ${special.colSpan} flex flex-col items-center justify-center text-center overflow-hidden hover:${special.glow} hover:-translate-y-2`}
                             >
-                                {/* Hover Glow */}
-                                <div className="absolute inset-0 bg-gradient-to-t from-cyan-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                                {/* Decorative Ornaments */}
+                                <div className={`absolute top-0 right-0 w-24 h-24 bg-gradient-to-bl from-white/10 to-transparent opacity-10 group-hover:opacity-20 transition-opacity`} />
+                                <div className={`absolute top-4 right-4 w-12 h-[1px] ${special.accent} opacity-40`} />
+                                <div className={`absolute top-4 right-4 w-[1px] h-12 ${special.accent} opacity-40`} />
 
-                                <div className="w-20 h-20 rounded-full flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-500 bg-white/[0.02] border border-white/5">
-                                    {special.icon}
+                                <div className={`absolute bottom-4 left-4 w-12 h-[1px] ${special.accent} opacity-40`} />
+                                <div className={`absolute bottom-4 left-4 w-[1px] h-12 ${special.accent} opacity-40`} />
+
+                                {/* Internal Grid Pattern */}
+                                <div className="absolute inset-0 opacity-[0.03] pointer-events-none" style={{ backgroundImage: 'radial-gradient(circle, #fff 1px, transparent 1px)', backgroundSize: '20px 20px' }} />
+
+                                {/* Hover Scanline Effect */}
+                                <div className={`absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-y-full group-hover:animate-[scanline_3s_linear_infinite] pointer-events-none`} />
+
+                                <div className={`w-24 h-24 rounded-2xl flex items-center justify-center mb-8 group-hover:scale-110 transition-transform duration-700 ${special.bg} border border-white/5 relative`}>
+                                    <div className={`absolute inset-0 blur-xl opacity-20 ${special.accent}`} />
+                                    <div className={`relative z-10 ${special.accent}`}>
+                                        {special.icon}
+                                    </div>
                                 </div>
-                                <h4 className="text-xl md:text-2xl font-bold text-white mb-3 tracking-wide">{special.title}</h4>
-                                {special.subtitle && <h5 className="text-lg font-bold text-cyan-400 mb-4">{special.subtitle}</h5>}
-                                <p className="text-sm font-light text-gray-400 tracking-wide">{special.desc}</p>
+
+                                <div className="space-y-4 relative z-10">
+                                    <h4 className="text-2xl md:text-3xl font-black text-white tracking-tight uppercase italic group-hover:scale-105 transition-transform duration-500">
+                                        {special.title}
+                                    </h4>
+
+                                    {special.subtitle && (
+                                        <div className={`inline-block px-4 py-1.5 rounded-full ${special.bg} border border-white/10`}>
+                                            <h5 className={`text-sm font-black uppercase tracking-widest ${special.accent}`}>
+                                                {special.subtitle}
+                                            </h5>
+                                        </div>
+                                    )}
+
+                                    <p className="text-gray-400 text-sm md:text-base font-light tracking-wide max-w-md leading-relaxed">
+                                        {special.desc}
+                                    </p>
+
+                                    <div className={`h-[1px] w-12 mx-auto bg-gradient-to-r from-transparent via-white/20 to-transparent group-hover:w-32 transition-all duration-700`} />
+                                </div>
                             </motion.div>
                         ))}
                     </div>
 
                     {/* Participation Certificate Banner */}
-                    <div className="mt-16 text-center relative py-6 flex items-center justify-center gap-4">
-                        <span className="text-lg md:text-xl font-light text-gray-300 tracking-wide">
-                            Participation certificates for all the participants.
-                        </span>
-                    </div>
+                    <motion.div
+                        initial={{ opacity: 0 }}
+                        whileInView={{ opacity: 1 }}
+                        viewport={{ once: true }}
+                        className="mt-36 relative py-12 px-12 rounded-2xl bg-white/[0.02] border border-white/5 flex flex-col md:flex-row items-center justify-center gap-6 overflow-hidden group hover:border-white/10 transition-colors"
+                    >
+                        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white-[0.02] to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
+
+                        <div className="flex items-center gap-4">
+                            <ShieldCheck className="w-6 h-6 text-cyan-500 animate-pulse" />
+                            <span className="text-lg md:text-xl font-medium text-gray-200 tracking-tight">
+                                Participation certificates for all the participants.
+                            </span>
+                        </div>
+
+                        <div className="h-px w-24 bg-gradient-to-r from-transparent via-white/20 to-transparent" />
+
+                        <div className="flex -space-x-4">
+                            {[
+                                "/Coordinater/hacker_01.png",
+                                "/Coordinater/webdev_guru.png",
+                                "/Coordinater/swaghunter.png",
+                                "/Coordinater/open_source.png"
+                            ].map((url, i) => (
+                                <div key={i} className="w-12 h-12 rounded-full border-2 border-black bg-gray-800 flex items-center justify-center overflow-hidden shadow-2xl relative" style={{ zIndex: 10 - i }}>
+                                    <img src={url} alt="" className="w-full h-full object-cover" />
+                                </div>
+                            ))}
+                            <div className="w-12 h-12 rounded-full border-2 border-black bg-gray-900 flex items-center justify-center text-xs text-cyan-400 font-extrabold shadow-2xl z-10 backdrop-blur-md relative">
+                                +1K
+                            </div>
+                        </div>
+                    </motion.div>
                 </motion.div>
             </div>
         </section>
