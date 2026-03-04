@@ -44,7 +44,7 @@ const CollegeIcon = () => (
 
 const SocialLoop = () => {
     const icons = [
-        { icon: FaGithub, label: 'GITHUB', href: 'https://github.com/Bhaskar2522' },
+        { icon: FaGithub, label: 'GITHUB', href: 'https://github.com/Bhaskar2522/orchathon' },
         { icon: FaInstagram, label: 'INSTAGRAM', href: 'https://www.instagram.com/csesa_nkocet?igsh=MTV2Z3d0MGE0czVmcw==' },
         { icon: FaLinkedin, label: 'LINKEDIN', href: 'https://www.linkedin.com/company/csesa-nkocet/' },
         { icon: CollegeIcon, label: 'COLLEGE', href: 'https://orchidengg.ac.in/' },
