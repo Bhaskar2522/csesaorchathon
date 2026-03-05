@@ -51,7 +51,7 @@ const Footer = () => {
                         </svg>
                     </a>
                     <a
-                        href="https://github.com/Bhaskar2522/orchathon"
+                        href="https://github.com/CSESA-NKOCET/Orchathon2026.git"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="text-gray-500 hover:text-white transition-colors"
