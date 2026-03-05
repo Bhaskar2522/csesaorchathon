@@ -54,7 +54,7 @@ const About = () => {
                             <h3 className="text-xl md:text-2xl font-bold text-white mb-6 flex items-center gap-3">
                                 <div className="w-12 h-12 rounded-xl bg-white flex items-center justify-center p-1 group-hover:scale-110 transition-transform overflow-hidden shadow-[0_0_15px_rgba(255,255,255,0.1)]">
                                     <img
-                                        src="/logo.png"
+                                        src="/college_logo.png"
                                         alt="Logo"
                                         className="w-full h-full object-contain"
                                     />

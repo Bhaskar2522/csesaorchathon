@@ -64,11 +64,7 @@ const Navbar = () => {
                             {link.name}
                         </Link>
                     ))}
-                    <a href="https://unstop.com/hackathons/orchathon-n-k-orchid-college-of-engineering-technologysolapur-1652140" target="_blank" rel="noopener noreferrer">
-                        <Button variant="secondary" size="sm">
-                            Register
-                        </Button>
-                    </a>
+
                 </div>
 
                 {/* Mobile Menu Toggle */}
@@ -124,21 +120,7 @@ const Navbar = () => {
                                 </Link>
                             ))}
                             <div className="w-full h-[1px] bg-white/10 my-4" />
-                            <a
-                                href="https://unstop.com/hackathons/orchathon-n-k-orchid-college-of-engineering-technologysolapur-1652140"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="w-full"
-                            >
-                                <Button
-                                    variant="primary"
-                                    size="lg"
-                                    className="w-full text-xl py-6 h-auto"
-                                    onClick={() => setIsOpen(false)}
-                                >
-                                    Register Now
-                                </Button>
-                            </a>
+
                         </div>
                     </motion.div>
                 )}

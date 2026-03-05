@@ -49,18 +49,6 @@ const mainPrizes = [
 
 const specialPrizes = [
     {
-        title: "Pre-Placement Interviews",
-        desc: "Exclusive interviews for 4th-year winners immediately after the contest.",
-        icon: <Target className="w-12 h-12" strokeWidth={1.5} />,
-        colSpan: "md:col-span-2",
-        theme: "cyan",
-        accent: "text-cyan-400",
-        bg: "bg-cyan-500/5",
-        border: "border-cyan-500/20",
-        hoverBorder: "group-hover:border-cyan-500/50",
-        glow: "shadow-[0_0_50px_rgba(6,182,212,0.15)]"
-    },
-    {
         title: "Best Innovative Idea + Performance",
         subtitle: "Girl's Team",
         desc: "Medals + Certificates",
@@ -131,15 +119,15 @@ const Prizes = () => {
 
                 {/* Main Prizes Tier (1, 2, 3) */}
                 <div className="flex flex-col md:flex-row justify-center items-end gap-8 mb-32 h-auto md:h-[500px]">
-                    {/* Reordering for visually pleasing podium (2nd, 1st, 3rd) on Desktop */}
-                    {[mainPrizes[1], mainPrizes[0], mainPrizes[2]].map((prize, idx) => (
+                    {/* Responsive ordering: 1-2-3 on Mobile, 2-1-3 on Desktop */}
+                    {mainPrizes.map((prize, idx) => (
                         <motion.div
                             key={prize.rank}
                             initial={{ opacity: 0, y: 50 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{ delay: prize.delay, duration: 0.6, type: "spring" }}
-                            className={`relative group w-full md:w-[350px] ${prize.scale} transition-all duration-500`}
+                            className={`relative group w-full md:w-[350px] ${prize.rank === 1 ? 'md:scale-110 z-10 md:order-2' : prize.rank === 2 ? 'md:order-1' : 'md:order-3'} transition-all duration-500`}
                         >
                             {/* Card Body */}
                             <div className={`relative rounded-3xl bg-[#0a0a0a] border ${prize.border} overflow-hidden backdrop-blur-xl flex flex-col items-center text-center p-8 hover:-translate-y-4 hover:${prize.glow} transition-all duration-500`}>
@@ -259,10 +247,10 @@ const Prizes = () => {
 
                         <div className="flex -space-x-4">
                             {[
-                                "/Coordinater/hacker_01.png",
-                                "/Coordinater/webdev_guru.png",
-                                "/Coordinater/swaghunter.png",
-                                "/Coordinater/open_source.png"
+                                "/Coordinater/IMG_0609.png",
+                                "/Coordinater/WhatsApp Image 2026-03-04 at 3.42.12 PM.png",
+                                "/Coordinater/01.png",
+                                "/Coordinater/0.png"
                             ].map((url, i) => (
                                 <div key={i} className="w-12 h-12 rounded-full border-2 border-black bg-gray-800 flex items-center justify-center overflow-hidden shadow-2xl relative" style={{ zIndex: 10 - i }}>
                                     <img src={url} alt="" className="w-full h-full object-cover" />

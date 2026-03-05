@@ -36,7 +36,7 @@ const SocialIconItem = ({ icon: Icon, label, href }: { icon: any, label: string,
 // Project Logo Icon
 const ProjectIcon = () => (
     <img
-        src="/logo.png"
+        src="/college_logo.png"
         alt="Orchathon Logo"
         className="w-8 h-8 md:w-10 md:h-10 object-contain"
     />
@@ -51,7 +51,7 @@ const SocialLoop = () => {
         { icon: FaFacebook, label: 'FACEBOOK', href: 'https://www.facebook.com/share/1AGMLqNb6Z/' },
         { icon: FaWhatsapp, label: 'WHATSAPP', href: 'https://chat.whatsapp.com/JoKZEl9KLNIJEAG5YANaAx' },
         { icon: FaXTwitter, label: 'X (TWITTER)', href: 'https://x.com/nk_orchid' },
-        { icon: FaYoutube, label: 'YOUTUBE', href: 'https://youtube.com/@nkocetsolapur' },
+        { icon: FaYoutube, label: 'YOUTUBE', href: 'https://www.youtube.com/@CSESA-NKOCET' },
     ];
 
     // Double/Triple for seamless wrap
@@ -61,19 +61,13 @@ const SocialLoop = () => {
         <div className="fixed right-3 md:right-8 top-[10%] bottom-[10%] z-[99] w-16 md:w-20 hidden md:flex flex-col items-center pointer-events-none">
             {/* Clipping Container */}
             <div className="relative z-10 w-full h-full overflow-hidden mask-fade-vertical px-1 pb-4">
-                <motion.div
-                    animate={{ y: [0, -768] }} // 8 icons * 96px total height per item (h-14/56px + mb-10/40px)
-                    transition={{
-                        duration: 15,
-                        repeat: Infinity,
-                        ease: "linear"
-                    }}
-                    className="flex flex-col items-center pt-8"
+                <div
+                    className="flex flex-col items-center pt-8 animate-social-loop pointer-events-auto"
                 >
                     {loopedIcons.map((item, index) => (
                         <SocialIconItem key={index} icon={item.icon} label={item.label} href={item.href} />
                     ))}
-                </motion.div>
+                </div>
             </div>
 
             {/* Custom mask replacement */}

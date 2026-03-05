@@ -154,7 +154,7 @@ const Contact = () => {
 
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                             {[
-                                { name: "Prof.Gulab Shaikh", role: "Staff Coordinator", phone: "+91 98902 92457", image: "/Coordinater/Gulab Shaikh.png" },
+                                { name: "Prof.Gulab Shaikh", role: "Faculty Coordinator", phone: "+91 98902 92457", image: "/Coordinater/Gulab Shaikh.png" },
                                 { name: "Sampanna Nampalli", role: "CSESA President", phone: "+91 95796 42050", image: "/Coordinater/Sampaan Nampelli.png" },
                                 { name: "Omkar Katta ", role: "CSESA Vice-President", phone: "+91 99609 98080", image: "/Coordinater/Omkar Katta.png" },
                                 { name: "Bhaskar Sanam", role: "Treasurer", phone: "+91 86688 54293", image: "/Coordinater/swaghunter.png" },
