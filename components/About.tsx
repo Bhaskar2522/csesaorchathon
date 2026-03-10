@@ -113,17 +113,39 @@ const About = () => {
                         <p className="text-gray-500 font-mono text-xs uppercase tracking-[0.4em]">Archive: Orchathon 2K25</p>
                     </div>
 
-                    <div className="relative group max-w-7xl mx-auto rounded-[2rem] overflow-hidden border border-white/10 shadow-[0_0_50px_rgba(0,0,0,0.8)]">
-                        <div className="aspect-video w-full bg-slate-900 flex items-center justify-center overflow-hidden relative group">
-                            {/* VIDEO CONTAINER */}
-                            <video
-                                className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-700"
-                                controls
-                                playsInline
-                            >
-                                <source src="/BehindSence.mp4" type="video/mp4" />
-                                Your browser does not support the video tag.
-                            </video>
+                    <div className="relative group max-w-7xl mx-auto rounded-[2rem] overflow-hidden border border-white/10 shadow-[0_0_80px_rgba(0,0,0,0.9)] bg-black">
+                        {/* Premium Glow Effect */}
+                        <div className="absolute -inset-4 bg-gradient-to-r from-cyan-500/10 via-blue-500/5 to-purple-500/10 blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-1000 -z-1" />
+
+                        {/* HUD Corner Accents */}
+                        <div className="absolute top-0 left-0 w-8 h-8 border-t-2 border-l-2 border-cyan-500/30 rounded-tl-[2rem] z-20 pointer-events-none group-hover:border-cyan-400 group-hover:scale-105 transition-all duration-500" />
+                        <div className="absolute top-0 right-0 w-8 h-8 border-t-2 border-r-2 border-cyan-500/30 rounded-tr-[2rem] z-20 pointer-events-none group-hover:border-cyan-400 group-hover:scale-105 transition-all duration-500" />
+                        <div className="absolute bottom-0 left-0 w-8 h-8 border-b-2 border-l-2 border-cyan-500/30 rounded-bl-[2rem] z-20 pointer-events-none group-hover:border-cyan-400 group-hover:scale-105 transition-all duration-500" />
+                        <div className="absolute bottom-0 right-0 w-8 h-8 border-b-2 border-r-2 border-cyan-500/30 rounded-br-[2rem] z-20 pointer-events-none group-hover:border-cyan-400 group-hover:scale-105 transition-all duration-500" />
+
+                        <div className="aspect-video w-full flex items-center justify-center overflow-hidden relative z-10 bg-slate-900/40">
+                            {/* YOUTUBE EMBED */}
+                            <iframe
+                                className="w-full h-full opacity-80 group-hover:opacity-100 transition-opacity duration-700"
+                                src="https://www.youtube.com/embed/XMDRCqSpU10?rel=0&modestbranding=1&autohide=1&showinfo=0"
+                                title="Orchathon 2K25 Highlights"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                allowFullScreen
+                            />
+                        </div>
+
+                        {/* Overlay Metadata */}
+                        <div className="absolute bottom-4 right-6 z-20 pointer-events-none transition-all duration-500 group-hover:translate-x-0 translate-x-10 group-hover:opacity-100 opacity-0 hidden md:flex items-center gap-4">
+                            <div className="flex flex-col items-end">
+                                <p className="text-[8px] font-mono text-cyan-400 uppercase tracking-widest">Signal Boost</p>
+                                <p className="text-[10px] font-mono text-white">4K ULTRA HD</p>
+                            </div>
+                            <div className="w-[1px] h-6 bg-white/20" />
+                            <div className="flex items-center gap-1">
+                                {[1, 2, 3, 4, 5].map(i => (
+                                    <div key={i} className={`w-1 h-3 rounded-full ${i <= 4 ? 'bg-cyan-500' : 'bg-white/20'}`} />
+                                ))}
+                            </div>
                         </div>
                     </div>
 
