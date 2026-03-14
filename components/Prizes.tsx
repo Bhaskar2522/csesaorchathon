@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import CountUp from './CountUp';
 import { motion } from 'framer-motion';
 import { Trophy, Star, Medal, Award, Target, Users, Zap, ShieldCheck } from 'lucide-react';
 
@@ -115,6 +116,63 @@ const Prizes = () => {
                     <h2 className="text-5xl md:text-7xl font-black tracking-tight text-white uppercase italic drop-shadow-[0_0_20px_rgba(255,255,255,0.2)]">
                         Prizes
                     </h2>
+                </motion.div>
+
+                {/* Total Prize Pool Banner */}
+                <motion.div
+                    initial={{ opacity: 0, scale: 0.85 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.7, type: "spring" }}
+                    className="flex flex-col items-center mb-20 relative"
+                >
+                    {/* Outer glow ring */}
+                    <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+                        <div className="w-[480px] h-[160px] rounded-full bg-yellow-400/10 blur-[80px]" />
+                    </div>
+
+                    <div className="relative flex flex-col items-center gap-3">
+                        {/* Big prize pool number — animated CountUp with gradient */}
+                        <motion.div
+                            animate={{ filter: ['drop-shadow(0 0 18px rgba(246, 199, 59, 0.55))', 'drop-shadow(0 0 40px rgba(251,146,60,0.85))', 'drop-shadow(0 0 18px rgba(234,179,8,0.55))'] }}
+                            transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+                            className="tracking-tighter leading-none flex items-baseline gap-1 text-5xl sm:text-7xl md:text-9xl font-black"
+                            style={{ fontVariantNumeric: 'tabular-nums' }}
+                        >
+                            <span
+                                className="bg-gradient-to-r from-yellow-300 via-amber-400 to-orange-500 bg-clip-text text-transparent"
+                            >
+                                ₹
+                            </span>
+                            <CountUp
+                                from={0}
+                                to={50000}
+                                separator=","
+                                direction="up"
+                                duration={0.7}
+                                className="bg-gradient-to-r from-yellow-300 via-amber-400 to-orange-500 bg-clip-text text-transparent"
+                            />
+                            <span
+                                className="bg-gradient-to-r from-amber-400 to-orange-500 bg-clip-text text-transparent"
+                            >
+                                +
+                            </span>
+                        </motion.div>
+
+                        {/* Label */}
+                        <p className="text-xs md:text-sm font-mono tracking-[0.4em] text-gray-400 uppercase mt-2">
+                            Total Prize Pool
+                        </p>
+
+                        {/* Decorative underline */}
+                        <motion.div
+                            initial={{ width: 0 }}
+                            whileInView={{ width: '120px' }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.8, delay: 0.4 }}
+                            className="h-[2px] bg-gradient-to-r from-transparent via-yellow-400 to-transparent"
+                        />
+                    </div>
                 </motion.div>
 
                 {/* Main Prizes Tier (1, 2, 3) */}
@@ -238,7 +296,7 @@ const Prizes = () => {
                         initial={{ opacity: 0 }}
                         whileInView={{ opacity: 1 }}
                         viewport={{ once: true }}
-                        className="mt-36 relative py-12 px-12 rounded-2xl bg-white/[0.02] border border-white/5 flex flex-col md:flex-row items-center justify-center gap-6 overflow-hidden group hover:border-white/10 transition-colors"
+                        className="mt-24 md:mt-36 relative py-8 px-6 md:py-12 md:px-12 rounded-2xl bg-white/[0.02] border border-white/5 flex flex-col md:flex-row items-center justify-center gap-6 overflow-hidden group hover:border-white/10 transition-colors"
                     >
                         <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white-[0.02] to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
 

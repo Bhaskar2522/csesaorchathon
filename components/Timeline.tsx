@@ -1,21 +1,46 @@
 'use client';
 
-import React from 'react';
-import { motion } from 'framer-motion';
+import React, { useRef } from 'react';
+import { motion, useScroll, useTransform, useSpring } from 'framer-motion';
+import { Rocket } from 'lucide-react';
 
 const Timeline = () => {
+    const sectionRef = useRef<HTMLElement>(null);
+
+    // Track scroll progress of the timeline section
+    const { scrollYProgress } = useScroll({
+        target: sectionRef,
+        offset: ['start center', 'end center'],
+    });
+
+    // Smooth the raw scroll value for butter-smooth rocket movement
+    const smoothProgress = useSpring(scrollYProgress, {
+        stiffness: 80,
+        damping: 20,
+        restDelta: 0.001,
+    });
+
+    // Map scroll progress 0→1 to vertical position 0%→95%
+    const rocketY = useTransform(smoothProgress, [0, 1], ['0%', '95%']);
+
+    // Growing filled line behind rocket as you scroll
+    const lineScaleY = useTransform(smoothProgress, [0, 1], [0, 1]);
+
+    // Flame height grows when scroll speed is faster (mid-section)
+    const flameHeight = useTransform(smoothProgress, [0, 0.5, 1], [8, 22, 8]);
+
     const events = [
         { time: "March 4, 2026", title: "Theme Reveal & Registration", sub: "PHASE 01", desc: "Theme is unveiled and Unstop registration goes live. Start forming your teams!", icon: "🚀" },
         { time: "March 4, 2026", title: "Round 1: Idea PPT, Abstract and YouTube Demo link submission", sub: "PHASE 02", desc: "Round 1 begins with Open Innovations. Submit your project PPT for evaluation.", icon: "📄" },
         { time: "March 20, 2026", title: "Google Meet Interaction", sub: "SYNC", desc: "Online interaction session with mentors and evaluators via Google Meet.", icon: "💬" },
         { time: "March 25, 2026", title: "Round 1 Results", sub: "RESULTS", desc: "Shortlisted teams are announced and notified for the next phase.", icon: "📢" },
-        { time: "March 26, 2026", title: "Meeting 2", sub: "PHASE 03", desc: "Second interaction meeting exclusively for selected teams.", icon: "🤝" },
-        { time: "April 4–6, 2026", title: "Domain Selection", sub: "FINAL", desc: "Shortlisted teams will select three preferred domains through a Google Form.The final hackathon problem statement assigned to each team will be based on one of the selected domains", icon: "🧭" },
+        { time: "March 25, 2026", title: "Meeting 2", sub: "PHASE 03", desc: "Second interaction meeting exclusively for selected teams.", icon: "🤝" },
+        { time: "March 25-26, 2026", title: "Domain Selection", sub: "FINAL", desc: "Shortlisted teams will select three preferred domains through a Google Form. The final hackathon problem statement assigned to each team will be based on one of the selected domains.", icon: "🧭" },
         { time: "April 4–6, 2026", title: "Offline Hackathon (36 Hrs)", sub: "FINAL", desc: "The main event! 36-hour offline hackathon at NKOCET campus. Build, hack, win!", icon: "🏆" },
     ];
 
     return (
-        <section id="timeline" className="relative py-24 md:py-32 bg-black overflow-hidden">
+        <section ref={sectionRef} id="timeline" className="relative py-24 md:py-32 bg-black overflow-hidden">
             {/* Clean dark background */}
             <div className="absolute inset-0 z-0 bg-[#020205]" />
 
@@ -28,18 +53,55 @@ const Timeline = () => {
                     className="flex flex-col items-center mb-16 text-center"
                 >
                     <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-orange-500/30 bg-orange-500/10 mb-4">
-                        <div className="w-1 h-1 rounded-full bg-orange-400 animate-pulse" />
+                        <Rocket className="w-3 h-3 text-orange-400" />
                         <span className="text-[10px] font-mono tracking-[0.3em] text-orange-400 uppercase font-bold">Sector Analysis</span>
                     </div>
-                    <h2 className="text-4xl md:text-6xl font-light tracking-[0.15em] text-white uppercase">
+                    <h2 className="text-3xl sm:text-4xl md:text-6xl font-light tracking-[0.1em] text-white uppercase leading-tight">
                         Mission <span className="text-orange-500 font-bold drop-shadow-[0_0_15px_rgba(255,100,0,0.5)]">Timeline</span>
                     </h2>
                 </motion.div>
 
                 {/* Timeline Events */}
                 <div className="relative">
-                    {/* Vertical Line */}
-                    <div className="absolute left-[18px] md:left-1/2 top-0 bottom-0 w-[1px] bg-gradient-to-b from-transparent via-orange-500/40 to-transparent md:-translate-x-1/2" />
+
+                    {/* Background guide line (faint) */}
+                    <div className="absolute left-[18px] md:left-1/2 top-0 bottom-0 w-[1px] bg-gradient-to-b from-transparent via-orange-500/15 to-transparent md:-translate-x-1/2" />
+
+                    {/* Scroll-progress filled line — grows as you scroll */}
+                    <motion.div
+                        className="absolute left-[18px] md:left-1/2 top-0 w-[2px] md:-translate-x-1/2 origin-top rounded-full"
+                        style={{
+                            scaleY: lineScaleY,
+                            height: '100%',
+                            background: 'linear-gradient(to bottom, #f97316, #ea580c, #c2410c)',
+                        }}
+                    />
+
+                    {/* Scroll-driven Rocket */}
+                    <motion.div
+                        className="absolute left-[10px] md:left-1/2 z-30 md:-translate-x-1/2 pointer-events-none"
+                        style={{ top: rocketY }}
+                    >
+                        {/* Flame trail — above the rocket since it points downward */}
+                        <motion.div
+                            className="absolute left-1/2 -translate-x-1/2 bottom-full w-[3px] rounded-full"
+                            style={{
+                                height: flameHeight,
+                                background: 'linear-gradient(to top, #fb923c, rgba(251,146,60,0))',
+                            }}
+                        />
+
+                        {/* Outer glow */}
+                        <div className="absolute w-10 h-10 -top-2 -left-2 rounded-full bg-orange-500/25 blur-lg" />
+
+                        {/* Rocket — rotated 135° to point downward along the line */}
+                        <div
+                            className="text-2xl select-none drop-shadow-[0_0_12px_rgba(255,100,0,1)] relative z-10"
+                            style={{ transform: 'rotate(135deg)' }}
+                        >
+                            🚀
+                        </div>
+                    </motion.div>
 
                     <div className="space-y-8 md:space-y-0">
                         {events.map((event, i) => (

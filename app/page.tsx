@@ -12,6 +12,7 @@ import Reviews from "@/components/Reviews";
 import SocialLoop from "@/components/SocialLoop";
 import About from "@/components/About";
 import Contact from "@/components/Contact";
+import FAQ from "@/components/FAQ";
 import { motion } from "framer-motion";
 
 export default function HomePage() {
@@ -34,6 +35,7 @@ export default function HomePage() {
         <Prizes />
         <Timeline />
         <Reviews />
+        <FAQ />
         <Contact />
         <Footer />
       </motion.div>
