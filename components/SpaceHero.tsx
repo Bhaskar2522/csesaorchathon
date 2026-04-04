@@ -15,7 +15,7 @@ const SpaceHero = () => {
     const [rocketActive, setRocketActive] = useState(false);
     const [mounted, setMounted] = useState(false);
     const [debris, setDebris] = useState<Array<{ top: number, left: number, delay: number }>>([]);
-    const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
+    const [timeLeft, setTimeLeft] = useState({ hours: 0, minutes: 0, seconds: 0, ms: 0 });
 
     // Rocket Ignition Sequence Simulation & Countdown Timer
     useEffect(() => {
@@ -44,12 +44,12 @@ const SpaceHero = () => {
             }
 
             setTimeLeft({
-                days: Math.floor(distance / (1000 * 60 * 60 * 24)),
-                hours: Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)),
+                hours: Math.floor(distance / (1000 * 60 * 60)),
                 minutes: Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)),
-                seconds: Math.floor((distance % (1000 * 60)) / 1000)
+                seconds: Math.floor((distance % (1000 * 60)) / 1000),
+                ms: Math.floor((distance % 1000) / 10)
             });
-        }, 1000);
+        }, 10);
 
         return () => {
             clearInterval(interval);
@@ -213,10 +213,10 @@ const SpaceHero = () => {
                                 className="mt-8 md:mt-12 flex gap-3 md:gap-6 justify-center pointer-events-auto"
                             >
                                 {[
-                                    { label: "DAYS", value: timeLeft.days },
-                                    { label: "HOURS", value: timeLeft.hours },
-                                    { label: "MINS", value: timeLeft.minutes },
-                                    { label: "SECS", value: timeLeft.seconds }
+                                    { label: "HOURS", value: timeLeft.hours.toString().padStart(2, '0') },
+                                    { label: "MINS", value: timeLeft.minutes.toString().padStart(2, '0') },
+                                    { label: "SECS", value: timeLeft.seconds.toString().padStart(2, '0') },
+                                    { label: "MS", value: timeLeft.ms.toString().padStart(2, '0') }
                                 ].map((time, idx) => (
                                     <div key={idx} className="flex flex-col items-center">
                                         <div className="w-[60px] h-[60px] md:w-24 md:h-24 rounded-lg border border-cyan-500/30 bg-black/60 backdrop-blur-md flex items-center justify-center shadow-[0_0_20px_rgba(0,255,255,0.15)] mb-3 relative overflow-hidden group">
@@ -224,7 +224,7 @@ const SpaceHero = () => {
                                             <div className="absolute inset-0 bg-gradient-to-b from-cyan-500/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
                                             <span className="text-2xl md:text-5xl font-bold text-white font-mono drop-shadow-[0_0_10px_rgba(0,255,255,0.8)] relative z-10">
-                                                {time.value.toString().padStart(2, '0')}
+                                                {time.value}
                                             </span>
                                         </div>
                                         <span className="text-[10px] md:text-xs font-mono text-cyan-400 tracking-widest uppercase font-bold">{time.label}</span>
