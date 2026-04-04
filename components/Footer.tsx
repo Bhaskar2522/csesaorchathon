@@ -17,6 +17,14 @@ const Footer = () => {
                 </div>
 
                 <div className="flex items-center gap-6">
+                    <a 
+                        href="https://orchathon2k26.web.app/dashboard" 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className="text-xs font-mono text-cyan-500 hover:text-cyan-400 transition-colors uppercase tracking-[0.2em] border border-cyan-500/30 px-4 py-2 rounded-full bg-cyan-500/5 hover:bg-cyan-500/10"
+                    >
+                        Dashboard
+                    </a>
                     <a
                         href="https://www.linkedin.com/company/csesa-nkocet/"
                         target="_blank"

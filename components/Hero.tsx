@@ -44,9 +44,11 @@ const Hero = () => {
                     </p>
 
                     <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-                        <Button variant="primary" size="lg" className="group">
-                            Register Now <Rocket className="ml-2 w-5 h-5 group-hover:-translate-y-1 transition-transform" />
-                        </Button>
+                        <a href="https://orchathon2k26.web.app/dashboard" target="_blank" rel="noopener noreferrer">
+                            <Button variant="primary" size="lg" className="group">
+                                DASHBOARD <Rocket className="ml-2 w-5 h-5 group-hover:-translate-y-1 transition-transform" />
+                            </Button>
+                        </a>
                         <Button variant="secondary" size="lg" className="group">
                             Explore Mission <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
                         </Button>

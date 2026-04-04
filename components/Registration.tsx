@@ -8,7 +8,7 @@ import { Rocket } from 'lucide-react';
 
 const Registration = () => {
     return (
-        <section id="register" className="py-32 relative overflow-hidden bg-black flex flex-col items-center">
+        <section id="dashboard" className="py-32 relative overflow-hidden bg-black flex flex-col items-center">
             {/* Background Gradient & Grid */}
             <div className="absolute inset-0 z-0">
                 <div className="absolute inset-0 bg-gradient-to-b from-[#050510] to-black opacity-80" />

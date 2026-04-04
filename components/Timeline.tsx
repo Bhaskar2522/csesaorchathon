@@ -36,7 +36,7 @@ const Timeline = () => {
         { time: "March 25, 2026", title: "Round 1 Results", sub: "RESULTS", desc: "Shortlisted teams are announced and notified for the next phase.", icon: "📢" },
         { time: "March 25, 2026", title: "Meeting 2", sub: "PHASE 03", desc: "Second interaction meeting exclusively for selected teams.", icon: "🤝" },
         { time: "March 25-26, 2026", title: "Domain Selection", sub: "FINAL", desc: "Shortlisted teams will select three preferred domains through a Google Form. The final hackathon problem statement assigned to each team will be based on one of the selected domains.", icon: "🧭" },
-        { time: "April 4–6, 2026", title: "Offline Hackathon (36 Hrs)", sub: "FINAL", desc: "The main event! 36-hour offline hackathon at NKOCET campus. Build, hack, win!", icon: "🏆" },
+        { time: "April 4, 2026 (6:00 PM) – April 6, 2026 (6:00 AM)", title: "Offline Hackathon (36 Hrs)", sub: "FINAL", desc: "The main event! 36-hour offline hackathon at NKOCET campus. Build, hack, win!", icon: "🏆" },
     ];
 
     return (

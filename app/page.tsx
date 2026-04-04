@@ -13,6 +13,7 @@ import SocialLoop from "@/components/SocialLoop";
 import About from "@/components/About";
 import Contact from "@/components/Contact";
 import FAQ from "@/components/FAQ";
+import Sponsors from "@/components/Sponsors";
 import { motion } from "framer-motion";
 
 export default function HomePage() {
@@ -34,6 +35,7 @@ export default function HomePage() {
         <Mission />
         <Prizes />
         <Timeline />
+        <Sponsors />
         <Reviews />
         <FAQ />
         <Contact />

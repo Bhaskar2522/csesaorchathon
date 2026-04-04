@@ -31,6 +31,7 @@ const Navbar = () => {
         { name: 'About', href: '#about' },
         { name: 'Mission', href: '#mission' },
         { name: 'Timeline', href: '#timeline' },
+        { name: 'Sponsors', href: '#sponsors' },
         { name: 'Prizes', href: '#prizes' },
         { name: 'FAQ', href: '#faq' },
         { name: 'Contact', href: '#contact' },
@@ -66,7 +67,11 @@ const Navbar = () => {
                             {link.name}
                         </Link>
                     ))}
-
+                    <a href="https://orchathon2k26.web.app/dashboard" target="_blank" rel="noopener noreferrer" className="hidden md:block">
+                        <Button variant="blue" size="sm" className="px-6 text-xs tracking-widest uppercase">
+                            Dashboard
+                        </Button>
+                    </a>
                 </div>
 
                 {/* Mobile Menu Toggle */}
@@ -122,7 +127,17 @@ const Navbar = () => {
                                 </Link>
                             ))}
                             <div className="w-full h-[1px] bg-white/10 my-4" />
-
+                            <a 
+                                href="https://orchathon2k26.web.app/dashboard" 
+                                target="_blank" 
+                                rel="noopener noreferrer"
+                                className="w-full"
+                                onClick={() => setIsOpen(false)}
+                            >
+                                <Button variant="blue" size="lg" className="w-full text-lg tracking-widest uppercase italic">
+                                    Dashboard
+                                </Button>
+                            </a>
                         </div>
                     </motion.div>
                 )}

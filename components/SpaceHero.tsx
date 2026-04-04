@@ -31,8 +31,8 @@ const SpaceHero = () => {
             setTimeout(() => setRocketActive(false), 2000);
         }, 5000);
 
-        // Set fixed target to April 6th, 2026 at 10:00 AM
-        const targetDate = new Date('2026-04-06T10:00:00').getTime();
+        // Set target to April 6th, 2026 at 6:00 AM (36 hours after April 4, 6:00 PM)
+        const targetDate = new Date('2026-04-06T06:00:00').getTime();
 
         const countdownInterval = setInterval(() => {
             const now = new Date().getTime();
@@ -238,9 +238,9 @@ const SpaceHero = () => {
                                 transition={{ duration: 0.5 }}
                                 className="pointer-events-auto"
                             >
-                                <a href="https://unstop.com/hackathons/orchathon-n-k-orchid-college-of-engineering-technologysolapur-1652140" target="_blank" rel="noopener noreferrer">
+                                <a href="https://orchathon2k26.web.app/dashboard" target="_blank" rel="noopener noreferrer">
                                     <Button variant="blue" size="lg" className="w-64 md:w-80 text-xl font-extrabold text-white italic tracking-wider drop-shadow-[0_0_10px_rgba(255,255,255,0.3)]">
-                                        REGISTER NOW
+                                        DASHBOARD
                                     </Button>
                                 </a>
                             </motion.div>
